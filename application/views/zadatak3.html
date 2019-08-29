@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+<script>
+  var company = document.getElementById("company");
+
+            $.getJSON( "employees.json", function( data ) {
+              var items = [];
+              $.each( data, function( key, val ) {
+                if(val.email_address === company)
+                {
+                  items.push( "<tr>" + val.id +"</th><th>"+"</th><th>" + val.company +"</th><th>"+ val.last_name+"</th><th>"+ val.first_name+"</th><th>"+ val.email_address+"</th><th>"+ val.job_title+"</th><th>"+ val.business_phone+"</th><th>"+ val.home_phone+"</th><th>"+ val.mobile_phone+"</th><th>"+ val.fax_number+"</th><th>"+ val.address+"</th><th>"+ val.city+"</th><th>"+ val.state_province+"</th><th>"+ val.zip_postal_code+"</th><th>"+ val.country_region+"</th><th>"+ val.web_page+"</th><th>"+ val.notes + "/<th></tr>" );
+                }
+                else
+                {
+                  items.push( "<tr>" + val.id +"</th><th>"+"</th><th>" + val.company +"</th><th>"+ val.last_name+"</th><th>"+ val.first_name+"</th><th>"+ val.email_address+"</th><th>"+ val.job_title+"</th><th>"+ val.business_phone+"</th><th>"+ val.home_phone+"</th><th>"+ val.mobile_phone+"</th><th>"+ val.fax_number+"</th><th>"+ val.address+"</th><th>"+ val.city+"</th><th>"+ val.state_province+"</th><th>"+ val.zip_postal_code+"</th><th>"+ val.country_region+"</th><th>"+ val.web_page+"</th><th>"+ val.notes + "/<th></tr>" );
+                }
+              });
+             
+              $( "<ul/>", {
+                "class": "my-new-list",
+                html: items.join( "" )
+              }).appendTo( "body" );
+            });
+        </script>
+    </head>
+    <body onload="load()">
+      <form id="frm1">
+        <p id="demo"></p>
+        Company: <input type="text" name="company" value=""><br>
+        Email: <input type="email" name="email_address" value=""><br><br>
+        Email: <input type="text" name="job_title" value=""><br><br>
+        <input type="submit" value="Submit">
+      </form> 
+    <div id= "data">
+
+    </div>
+    </body>
+</html>
